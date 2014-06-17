@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls, ComCtrls, Grids, Unix, laz2_XMLRead, laz2_DOM;
+  StdCtrls, ComCtrls, Grids, ActnList, Menus, Unix, laz2_XMLRead, laz2_DOM,
+  aboutk, updf;
 
 type
 
@@ -17,9 +18,14 @@ type
     Image1: TImage;
     incb: TButton;
     groupl: TLabel;
+    MainMenu1: TMainMenu;
+    MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
+    updl: TLabel;
     upb: TButton;
     prevb: TButton;
-    groupblabel: TLabel;
     Maintl: TLabel;
     StringGrid1: TStringGrid;
     procedure FormCreate(Sender: TObject);
@@ -28,9 +34,13 @@ type
     procedure incbClick(Sender: TObject);
     procedure prevbClick(Sender: TObject);
 
+    procedure MenuItem2Click(Sender: TObject);
+    procedure MenuItem4Click(Sender: TObject);
+
     procedure egroupKeyPress(Sender: TObject; var Key: char);
     procedure egroupKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure upbClick(Sender: TObject);
+    procedure upbEnter(Sender: TObject);
   private
     { private declarations }
   public
@@ -66,6 +76,7 @@ procedure Tfmain.FormActivate(Sender: TObject);
   begin
        if FileExistsUTF8('/usr/share/loadshedding/routine.xml') then begin
           groupl.Caption:= 'Group ' + group.Attributes.Item[0].NodeValue;
+          egroup.Caption:= group.Attributes.Item[0].NodeValue;
 
             day:= group.FirstChild;
             while assigned(day) do begin
@@ -84,11 +95,13 @@ procedure Tfmain.FormActivate(Sender: TObject);
       end;
       l:= 1;
       end;
+      updl.Visible:= false;
 end;
 
 
 procedure Tfmain.prevbClick(Sender: TObject);
 begin
+     if FileExistsUTF8('/usr/share/loadshedding/routine.xml') then
      if strtoint(group.Attributes.Item[0].NodeValue) > 1 then begin
      group:= group.PreviousSibling;
      FormActivate(nil);
@@ -98,11 +111,24 @@ end;
 
 procedure Tfmain.incbClick(Sender: TObject);
 begin
+     if FileExistsUTF8('/usr/share/loadshedding/routine.xml') then
      if strtoint(group.Attributes.Item[0].NodeValue) < 7 then begin
      group:= group.NextSibling;
      FormActivate(nil);
      egroup.Caption:= group.Attributes.Item[0].NodeValue;
      end;
+end;
+
+procedure Tfmain.MenuItem2Click(Sender: TObject);
+begin
+     // Quit
+     close;
+end;
+
+procedure Tfmain.MenuItem4Click(Sender: TObject);
+begin
+     //About
+     abk.Show;
 end;
 
 procedure Tfmain.egroupKeyPress(Sender: TObject; var Key: char);
@@ -122,6 +148,7 @@ begin
      egroup.Clear;
 
      // searching group
+     if FileExistsUTF8('/usr/share/loadshedding/routine.xml') then
      if egroup.Caption <> '' then begin
         a:= egroup.Caption;
         group:= doc.DocumentElement.FindNode('group');
@@ -134,10 +161,15 @@ end;
 
 procedure Tfmain.upbClick(Sender: TObject);
 begin
-     //SysUtils.ExecuteProcess(UTF8ToSys('sh /usr/share/loadshedding/update.sh'), '', []);
+     updl.Visible:= true;
      Shell('sh /usr/share/loadshedding/update.sh');
-     ShowMessage('Updated successfully');
+     fupd.ShowModal;
      FormCreate(nil); FormActivate(nil);
+end;
+
+procedure Tfmain.upbEnter(Sender: TObject);
+begin
+     updl.Visible:= true;
 end;
 
 end.

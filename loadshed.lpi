@@ -38,7 +38,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="2">
+    <Units Count="6">
       <Unit0>
         <Filename Value="loadshed.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -52,6 +52,30 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="mainf"/>
       </Unit1>
+      <Unit2>
+        <Filename Value="updf.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fupd"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="updf"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="aboutk.lfm"/>
+        <IsPartOfProject Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="aboutk.lrs"/>
+        <IsPartOfProject Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="aboutk.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="abk"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="aboutk"/>
+      </Unit5>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -77,4 +101,17 @@
       <CompilerPath Value="$(CompPath)"/>
     </Other>
   </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="3">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+    </Exceptions>
+  </Debugging>
 </CONFIG>

@@ -1,10 +1,10 @@
 object fmain: Tfmain
-  Left = 439
-  Height = 369
-  Top = 168
+  Left = 427
+  Height = 389
+  Top = 153
   Width = 530
   Caption = 'Chitwanix loadshedding application'
-  ClientHeight = 369
+  ClientHeight = 368
   ClientWidth = 530
   Color = clCream
   Icon.Data = {
@@ -540,6 +540,7 @@ object fmain: Tfmain
     0000000000000000000000000000000000000000000000000000000000000000
     0000
   }
+  Menu = MainMenu1
   OnActivate = FormActivate
   OnCreate = FormCreate
   Position = poDesktopCenter
@@ -551,10 +552,10 @@ object fmain: Tfmain
     AnchorSideTop.Side = asrCenter
     AnchorSideBottom.Control = prevb
     AnchorSideBottom.Side = asrBottom
-    Left = 110
+    Left = 109
     Height = 194
-    Top = 115
-    Width = 310
+    Top = 114
+    Width = 312
     Anchors = [akLeft, akBottom]
     BorderSpacing.Bottom = 40
     ColCount = 3
@@ -576,20 +577,21 @@ object fmain: Tfmain
     DefaultColWidth = 90
     Font.Height = -11
     Font.Name = 'Sans'
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
     ParentFont = False
     RowCount = 8
     ScrollBars = ssNone
     TabOrder = 0
     TitleFont.Height = -11
     TitleFont.Name = 'Sans'
-    TitleStyle = tsStandard
+    TitleStyle = tsNative
   end
   object groupl: TLabel
     AnchorSideLeft.Control = StringGrid1
     AnchorSideBottom.Control = StringGrid1
-    Left = 110
+    Left = 109
     Height = 23
-    Top = 72
+    Top = 71
     Width = 43
     Anchors = [akLeft, akBottom]
     BorderSpacing.Bottom = 20
@@ -606,28 +608,14 @@ object fmain: Tfmain
     AnchorSideTop.Control = Owner
     Left = 153
     Height = 16
-    Top = 20
+    Top = 40
     Width = 224
-    BorderSpacing.Top = 20
+    BorderSpacing.Top = 40
     Caption = 'Chitwanix Loadshedding Application'
     Font.Height = -12
     Font.Name = 'Sans'
     ParentColor = False
     ParentFont = False
-  end
-  object groupblabel: TLabel
-    AnchorSideLeft.Control = Owner
-    AnchorSideTop.Control = egroup
-    AnchorSideBottom.Control = Owner
-    AnchorSideBottom.Side = asrBottom
-    Left = 0
-    Height = 18
-    Top = 351
-    Width = 40
-    Anchors = [akLeft, akBottom]
-    Caption = 'Group'
-    ParentColor = False
-    Visible = False
   end
   object incb: TButton
     AnchorSideLeft.Control = egroup
@@ -638,7 +626,7 @@ object fmain: Tfmain
     AnchorSideBottom.Side = asrBottom
     Left = 295
     Height = 22
-    Top = 327
+    Top = 326
     Width = 70
     BorderSpacing.Left = 10
     BorderSpacing.Top = 20
@@ -648,7 +636,6 @@ object fmain: Tfmain
     TabOrder = 1
   end
   object prevb: TButton
-    AnchorSideLeft.Control = groupblabel
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = StringGrid1
     AnchorSideTop.Side = asrBottom
@@ -657,7 +644,7 @@ object fmain: Tfmain
     AnchorSideBottom.Side = asrBottom
     Left = 165
     Height = 22
-    Top = 327
+    Top = 326
     Width = 70
     Anchors = [akRight, akBottom]
     BorderSpacing.Left = 10
@@ -669,22 +656,22 @@ object fmain: Tfmain
     TabOrder = 2
   end
   object upb: TButton
-    AnchorSideLeft.Control = groupblabel
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = groupl
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = StringGrid1
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = StringGrid1
-    Left = 360
+    Left = 361
     Height = 22
-    Top = 72
+    Top = 71
     Width = 60
     Anchors = [akTop, akRight]
     BorderSpacing.Left = 10
     BorderSpacing.Bottom = 10
     Caption = 'update'
     OnClick = upbClick
+    OnEnter = upbEnter
     TabOrder = 3
   end
   object egroup: TEdit
@@ -696,7 +683,7 @@ object fmain: Tfmain
     AnchorSideBottom.Side = asrBottom
     Left = 245
     Height = 22
-    Top = 327
+    Top = 326
     Width = 40
     Alignment = taRightJustify
     Anchors = [akLeft, akBottom]
@@ -721,7 +708,7 @@ object fmain: Tfmain
     AnchorSideBottom.Side = asrBottom
     Left = 470
     Height = 50
-    Top = 309
+    Top = 308
     Width = 50
     Anchors = [akRight, akBottom]
     BorderSpacing.Around = 10
@@ -14765,5 +14752,42 @@ object fmain: Tfmain
       454E44AE426082
     }
     Proportional = True
+  end
+  object updl: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = egroup
+    AnchorSideTop.Side = asrCenter
+    AnchorSideBottom.Control = egroup
+    AnchorSideBottom.Side = asrBottom
+    Left = 10
+    Height = 15
+    Top = 333
+    Width = 132
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 10
+    Caption = 'Updating... Please wait'
+    Font.Height = -11
+    Font.Name = 'Sans'
+    ParentColor = False
+    ParentFont = False
+    Visible = False
+  end
+  object MainMenu1: TMainMenu
+    left = 24
+    top = 40
+    object MenuItem1: TMenuItem
+      Caption = '&File'
+      object MenuItem2: TMenuItem
+        Caption = '&Quit'
+        OnClick = MenuItem2Click
+      end
+    end
+    object MenuItem3: TMenuItem
+      Caption = '&Help'
+      object MenuItem4: TMenuItem
+        Caption = '&About'
+        OnClick = MenuItem4Click
+      end
+    end
   end
 end
