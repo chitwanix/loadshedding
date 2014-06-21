@@ -69,7 +69,8 @@ end;
 
 procedure Tabk.dataClick(Sender: TObject);
 begin
-     OpenURL('mailto:nventafini@gmx.com?subject=Kelvin');
+     OpenURL('mailto:nventafini@gmx.com?subject=Loadshedding');
+     //OpenURL('mailto:nventafini@gmx.com');
 end;
 
 procedure Tabk.FormActivate(Sender: TObject);
