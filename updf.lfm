@@ -1,7 +1,7 @@
 object fupd: Tfupd
   Left = 502
   Height = 143
-  Top = 300
+  Top = 275
   Width = 334
   BorderIcons = []
   BorderStyle = bsDialog

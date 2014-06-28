@@ -74,7 +74,10 @@ end;
 
 procedure Tfmain.FormActivate(Sender: TObject);
   begin
-       if FileExistsUTF8('/usr/share/loadshedding/routine.xml') then begin
+       if FileExistsUTF8('/usr/share/loadshedding/routine.xml') then
+
+       if group.FirstChild.FirstChild.FirstChild <> nil then begin
+
           groupl.Caption:= 'Group ' + group.Attributes.Item[0].NodeValue;
           egroup.Caption:= group.Attributes.Item[0].NodeValue;
 
@@ -85,7 +88,7 @@ procedure Tfmain.FormActivate(Sender: TObject);
 
                   hour:= day.FirstChild;
                   while Assigned(hour) do begin;
-                        StringGrid1.Cells[c,l]:= hour.FirstChild.TextContent;
+                        StringGrid1.Cells[c,l]:= hour.FirstChild.NodeValue;
                         inc(c);
                   hour:= hour.NextSibling;
                   end;
@@ -152,9 +155,9 @@ begin
      if egroup.Caption <> '' then begin
         a:= egroup.Caption;
         group:= doc.DocumentElement.FindNode('group');
-        while group.Attributes.Item[0].NodeValue <> a do begin
+        while group.Attributes.Item[0].NodeValue <> a do
               group:= group.NextSibling;
-        end;
+
            FormActivate(nil);
      end;
 end;
@@ -163,6 +166,14 @@ procedure Tfmain.upbClick(Sender: TObject);
 begin
      updl.Visible:= true;
      Shell('sh /usr/share/loadshedding/update.sh');
+
+     if FileExists('/usr/share/loadshedding/routine.xml') then begin
+        ReadXMLFile(doc, '/usr/share/loadshedding/routine.xml');
+     group:= doc.DocumentElement.FindNode('group');
+     if group.FirstChild.FirstChild.FirstChild.NodeValue= '' then
+        fupd.Label1.Caption:= 'Update error';
+     end;
+
      fupd.ShowModal;
      FormCreate(nil); FormActivate(nil);
 end;

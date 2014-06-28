@@ -1,7 +1,7 @@
 object fmain: Tfmain
-  Left = 406
+  Left = 396
   Height = 399
-  Top = 203
+  Top = 140
   Width = 530
   Caption = 'Chitwanix loadshedding application'
   ClientHeight = 378
@@ -13,12 +13,6 @@ object fmain: Tfmain
   Position = poDesktopCenter
   LCLVersion = '1.0.14.0'
   object StringGrid1: TStringGrid
-    AnchorSideLeft.Control = Owner
-    AnchorSideLeft.Side = asrCenter
-    AnchorSideTop.Control = Owner
-    AnchorSideTop.Side = asrCenter
-    AnchorSideBottom.Control = prevb
-    AnchorSideBottom.Side = asrBottom
     Left = 109
     Height = 194
     Top = 124
@@ -44,6 +38,7 @@ object fmain: Tfmain
     DefaultColWidth = 90
     Font.Height = -11
     Font.Name = 'Sans'
+    HeaderHotZones = [gzFixedCols, gzFixedCells]
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goSmoothScroll]
     ParentFont = False
     RowCount = 8
